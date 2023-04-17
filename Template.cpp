@@ -10,7 +10,6 @@ int main(){
     //code goes here
     return 0;
 }
-
 // notes : endl mais devagar que \n
 // cin string com espaço --> getline(cin,string var)
 // continue; - pula o bloco de comando atual e vai pro prox
