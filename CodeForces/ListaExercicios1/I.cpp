@@ -5,7 +5,7 @@
 using namespace std;
 int main(){
     desync;
-    int n, m;
+    int n, m, min = 10, max = 0;
     char c[10][10];
     bool bt[10] = {0}, at[10]={0};
     cin >> n >> m;
@@ -20,12 +20,25 @@ int main(){
                     b = i+1;
                     bt[i] = true;
                 }
-                if(!at[j] and a < j + 1){
-                    a = j+1;
+                if(!at[j]){
                     at[j] = true;
+                    if(j < min){
+                        min = j + 1;
+                    }
+                    if(j >= max){
+                        max = j + 1;
+                    }
                 }
             }
         }
+    }
+    if(max == min and max!=0){
+        a = 1;
+    }else if( min > max){
+        a = 0;
+    }
+    else{
+        a = (max - min) +1;
     }
     cout << a << 'x' << b << endl;
     return 0;
