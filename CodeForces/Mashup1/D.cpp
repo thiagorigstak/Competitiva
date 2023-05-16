@@ -1,39 +1,88 @@
 #include <bits/stdc++.h>
-#define endl "\n"// macro 
-#define ll long long// macro
-#define desync ios_base::sync_with_stdio(false);//cin.tie(NULL);cout.tie(NULL)
+#define endl "\n"    // macro
+#define ll long long // macro
+#define pii pair<int, int>
+#define desync                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
 using namespace std;
-//typedef long long int ll; define ll para long long int "macro"
-int main(){
+
+int main()
+{
     desync;
-    int t,n,m;
-    cin >> t;
-    for(int i = 0; i < t; i++){
-        cin >> n >> m;
-        string s[n];
-        for(int j = 0; j < n;j++){
-            string s2;
-            cin >> s2;
-            s[j] = s2;
-        }
-        for(int x = 0; x < n; x++){
-            for(int j = n - 2; j >= 0; j--){
-                for(int k = 0; k < m; k++){
-                    if(s[j][k] == '*' and s[j+1][k] == '.'){
-                        s[j+1][k] = '*';
-                        s[j][k] = '.';
-                }
-            }        
-        }
+    int n, c, b; // n = caminhoes, c = caixas em U, b = capacidade da caixa
+    int v = 0, x, carr;
+    queue<pii> caminhao;
+    cin >> n >> c >> b;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> x;
+        caminhao.push(make_pair(x, 1));
     }
-        for(int j = 0; j < n; j++){
-                cout << s[j] << endl;
+    int i = 0;
+    while (!caminhao.empty())
+    {
+        if (i < n)
+        {
+            cin >> x;
+            if (x == 0)
+            {
+                v += caminhao.front().first;
             }
-     cout << endl;
+            else
+            {
+                if (c == 0 and caminhao.front().second == 1)
+                {
+                    caminhao.push(make_pair(caminhao.front().first, 2));
+                }
+                else
+                {
+                    if (c > 0)
+                    {
+                        carr = caminhao.front().first;
+                        while (carr >= b and c > 0)
+                        {
+                            c -= 1;
+                            carr -= b;
+                        }
+                    }
+                }
+            }
+            caminhao.pop();
+            while (v >= b)
+            {
+                c += 1;
+                v -= b;
+            }
+            i++;
+        }
+        else
+        {
+            if (c == 0 and caminhao.front().second == 1)
+            {
+                caminhao.push(make_pair(caminhao.front().first, 2));
+            }
+            else
+            {
+                if (c > 0)
+                {
+                    carr = caminhao.front().first;
+                    while (carr >= b and c > 0)
+                    {
+                        c -= 1;
+                        carr -= b;
+                    }
+                }
+            }
+            caminhao.pop();
+            while (v >= b)
+            {
+                c += 1;
+                v -= b;
+            }
+        }
     }
-    return 0;
+cout << v + (c * b) << endl;
+return 0;
 }
-// notes : endl mais devagar que \n
-// cin string com espaço --> getline(cin,string var)
-// continue; - pula o bloco de comando atual e vai pro prox
-// break; - sai do laço definitivamente
