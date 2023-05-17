@@ -6,17 +6,8 @@ using namespace std;
 //typedef long long int ll; define ll para long long int "macro"
 int main(){
     desync;
-    int n,t,c,x;
-    int temp = 0, resp = 0;
-    cin >> n >> t >> c;
-    for(int i = 0; i < n; i++){
-        cin >> x;
-        if(x<t){
-            temp++;
-        }
-    }
-    resp = pow(c,temp);
-    cout << resp << endl;
+    // 1LL auto cast de int diretamente para long long
+    //code goes here
     return 0;
 }
 // notes : endl mais devagar que \n
@@ -24,3 +15,4 @@ int main(){
 // continue; - pula o bloco de comando atual e vai pro prox
 // break; - sai do laço definitivamente
 // min element vetor ou max element vetor ==> auto min = min_element(temp.begin(),temp.end()); cout << *min << endl; min é um ponteiro pro menor elemento do vetor
+// sort(me.begin(),me.end(),greater<int>()); // macete de ordenar inverso
