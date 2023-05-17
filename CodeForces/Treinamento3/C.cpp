@@ -8,27 +8,30 @@ int main(){
     desync;
     int n, reorder = 0, ordem = 0;
     stack<int> s;
-    string buff;
     cin >> n;
-    getline(cin, buff);
     for(int i = 0; i < 2*n; i++){
+        cin.clear();
         string sx;
-        getline(cin, sx);
+        int x;
+        (cin >> sx);
         if(sx[0] == 'a'){
-            s.push((int) (sx[4] - '0')); // empilha caixa n_o X
+            cin >> x;
+            s.push(x); // empilha caixa n_o X
         }
         else{ // desempilha caixa n_o X
             ordem++; // se a caixa > doq a ordem tem que reordenar
             if(!s.empty()){
-                if(s.top() == ordem){
-                    s.pop();
-                }
-                else{
+                if(s.top() != ordem){
+                    //cout << ordem << " Diferente " << s.top() << endl;
                     reorder++;
                     while(!s.empty()){
                         s.pop();
                     }
                 }
+                else{
+                        //cout << ordem << ' ' << s.top() << " igual" << endl;
+                        s.pop();
+                    }
             }
         }
     }

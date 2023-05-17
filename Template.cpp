@@ -14,3 +14,4 @@ int main(){
 // cin string com espaço --> getline(cin,string var)
 // continue; - pula o bloco de comando atual e vai pro prox
 // break; - sai do laço definitivamente
+// min element vetor ou max element vetor ==> auto min = min_element(temp.begin(),temp.end()); cout << *min << endl; min é um ponteiro pro menor elemento do vetor
