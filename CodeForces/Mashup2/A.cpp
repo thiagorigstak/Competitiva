@@ -6,8 +6,20 @@ using namespace std;
 //typedef long long int ll; define ll para long long int "macro"
 int main(){
     desync;
-    // 1LL auto cast de int diretamente para long long
-    //code goes here
+    ll n, x;
+    double d;
+    cin >> n;
+    d = cbrt(n);
+    x = floor(d);
+    //cout << x << endl;
+    if(x*x*x == n){
+        cout << x << endl;
+    }
+    else if(x+1*x+1*x+1 == n){
+        cout << x+1 << endl;
+    }else{
+        cout << -1 << endl;
+    }
     return 0;
 }
 // notes : endl mais devagar que \n
