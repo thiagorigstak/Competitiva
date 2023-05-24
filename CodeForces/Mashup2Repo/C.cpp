@@ -6,27 +6,32 @@ using namespace std;
 //typedef long long int ll; define ll para long long int "macro"
 int main(){
     desync;
-    int x,p,t,n,resp = 0;
-    stack<int> treno, aux;
-    vector<int> cidades;
-    cin >> p >> t >> n;
-    for(int i = 0; i < p; i++){
-        cin >> x;
-        cidades.push_back(x);
-    }
+    int t,n,x,res = 0;
+    cin >> t;
     for(int i = 0; i < t; i++){
-        cin >> x;
-        treno.push(x);
-    }
-    while(!treno.empty()){
-        resp++;
-        for(int i = 0; i < p; i++){
-            while (aux.size() < n);
-            {
-                aux.push(treno.top());
-                treno.pop();
+        res = 0;
+        set<int> sla,aux;
+        cin >> n;
+        for(int j = 0; j < n; j++){
+            cin >> x;
+            if(x%2 == 0){
+                sla.insert(x);
             }
         }
+        for(auto j = sla.rbegin(); j!=sla.rend(); ++j){
+            x = *j;
+            //cout << x << endl;
+            if(!aux.count(x)){
+                while(x%2 == 0){
+                //cout << x << ' ';
+                aux.insert(x);
+                x /= 2;
+                res+=1;
+                }
+                //cout << endl;
+            }
+        }
+        cout << res << endl;
     }
     return 0;
 }

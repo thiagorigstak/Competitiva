@@ -6,28 +6,24 @@ using namespace std;
 //typedef long long int ll; define ll para long long int "macro"
 int main(){
     desync;
-    int x,p,t,n,resp = 0;
-    stack<int> treno, aux;
-    vector<int> cidades;
-    cin >> p >> t >> n;
-    for(int i = 0; i < p; i++){
+    int n,x,sanduva, res = 0;
+    priority_queue<int> pq;
+    cin >> n;
+    cin >> sanduva;
+    for(int i = 0; i < n - 1; i++){
         cin >> x;
-        cidades.push_back(x);
+        pq.push(x);
     }
-    for(int i = 0; i < t; i++){
-        cin >> x;
-        treno.push(x);
+    while(sanduva <= pq.top()){
+        x = pq.top();
+        sanduva += 1;
+        x -= 1;
+        pq.pop();
+        pq.push(x);
+        res++;
     }
-    while(!treno.empty()){
-        resp++;
-        for(int i = 0; i < p; i++){
-            while (aux.size() < n);
-            {
-                aux.push(treno.top());
-                treno.pop();
-            }
-        }
-    }
+    //cout << sanduva << ' ' << pq.top() << endl;
+    cout << res << endl;
     return 0;
 }
 // notes : endl mais devagar que \n
