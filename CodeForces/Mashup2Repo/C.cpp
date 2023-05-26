@@ -6,37 +6,33 @@ using namespace std;
 //typedef long long int ll; define ll para long long int "macro"
 int main(){
     desync;
-    int n, k1,k2,x, res = 0, k;
-    vector<int> dist;
-    priority_queue<int> pq;
-    cin >> n >> k1 >> k2;
-    k = k1+k2;
-    for(int i = 0;i < n; i++){
-        cin >> x;
-        dist.push_back(x);
-    }
-    for(int i = 0;i < n; i++){
-        cin >> x;
-        x = abs(x);
-        pq.push(abs(dist[i] - x));
-    }
-    while(k--){
-        x = pq.top();
-        if(x == 0){
-            x++;
-            pq.pop();
-            pq.push(x);
-        }else{
-            x--;
-            pq.pop();
-            pq.push(x);
+    int t,n,x,res = 0;
+    cin >> t;
+    for(int i = 0; i < t; i++){
+        res = 0;
+        set<int> sla,aux;
+        cin >> n;
+        for(int j = 0; j < n; j++){
+            cin >> x;
+            if(x%2 == 0){
+                sla.insert(x);
+            }
         }
+        for(auto j = sla.rbegin(); j!=sla.rend(); ++j){
+            x = *j;
+            //cout << x << endl;
+            if(!aux.count(x)){
+                while(x%2 == 0){
+                //cout << x << ' ';
+                aux.insert(x);
+                x /= 2;
+                res+=1;
+                }
+                //cout << endl;
+            }
+        }
+        cout << res << endl;
     }
-    while(!pq.empty()){
-        res += pq.top() * pq.top();
-        pq.pop();
-    }
-    cout << res << endl;
     return 0;
 }
 // notes : endl mais devagar que \n

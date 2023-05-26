@@ -6,38 +6,26 @@ using namespace std;
 //typedef long long int ll; define ll para long long int "macro"
 int main(){
     desync;
-    int n, k1,k2,x, res = 0, k;
-    vector<int> dist;
-    priority_queue<int> pq;
-    cin >> n >> k1 >> k2;
-    k = k1+k2;
-    for(int i = 0;i < n; i++){
-        cin >> x;
-        dist.push_back(x);
-    }
-    for(int i = 0;i < n; i++){
-        cin >> x;
-        x = abs(x);
-        pq.push(abs(dist[i] - x));
-    }
-    while(k--){
-        x = pq.top();
-        if(x == 0){
-            x++;
-            pq.pop();
-            pq.push(x);
-        }else{
-            x--;
-            pq.pop();
-            pq.push(x);
+    int p,n,x,y,aux;
+    stack<int> pilha;
+    cin >> p >> n;
+    for(int i = 0; i < n; i++){
+        cin >> x >> y;
+        if(x == 1){
+            pilha.push(y);
+        }
+        else{
+            while(y){
+                pilha.pop();
+                y--;
+            }
         }
     }
-    while(!pq.empty()){
-        res += pq.top() * pq.top();
-        pq.pop();
+    while(!pilha.empty()){
+        p += pilha.top();
+        pilha.pop();
     }
-    cout << res << endl;
-    return 0;
+    cout << p << endl;
 }
 // notes : endl mais devagar que \n
 // cin string com espaço --> getline(cin,string var)
