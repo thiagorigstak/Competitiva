@@ -3,15 +3,23 @@
 #define ll long long// macro
 #define desync ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 using namespace std;
-//typedef long long int ll; define ll para long long int "macro"
+
 int main(){
     desync;
-    // 1LL auto cast de int diretamente para long long
-    //code goes here
+    int q,t,m;//prisioneiros, gravidade, qtd pris transferir
+    set<int> estoque;
+    cin >> q;
+    for(int i = 0; i < q; i++){
+        cin >> t >> m;
+        if(t == 1){
+            estoque.insert(m);
+        }else{
+            if(estoque.count(m)){
+                cout << "Sim" << endl;
+            }else{
+                cout << "Nao" << endl;
+            }
+        }
+    }
     return 0;
 }
-// notes : endl mais devagar que \n
-// cin string com espaço --> getline(cin,string var)
-// continue; - pula o bloco de comando atual e vai pro prox
-// break; - sai do laço definitivamente
-// min element vetor ou max element vetor ==> auto min = min_element(temp.begin(),temp.end()); cout << *min << endl; min é um ponteiro pro menor elemento do vetor
