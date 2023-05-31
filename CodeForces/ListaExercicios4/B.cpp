@@ -6,14 +6,20 @@ using namespace std;
 //typedef long long int ll; define ll para long long int "macro"
 int main(){
     desync;
-    int n,q,l,r,x;
+    ll n,q,l,r,x,s = 0;
     cin >> n >> q;
-    vector<int> arr(n,0),delta(n+2,0);
+    vector<ll> arr(n,0),delta(n+2,0),psum(n+1,0);
     for(int i = 0; i < q; i++){
         cin >> l >> r >> x; // posiçao ini posicao fin valor a adicionar
         delta[l] += x;
         delta[r+1] -= x;
     }
+    for(int i = 1; i <= n; i++){
+        s += delta[i];
+        psum[i] = s;
+        cout << psum[i] << ' ';
+    }
+    cout << endl;
     return 0;
 }
 // notes : endl mais devagar que \n
