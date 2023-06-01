@@ -6,9 +6,9 @@ using namespace std;
 //typedef long long int ll; define ll para long long int "macro"
 int main(){
     desync;
-    int n, k1,k2,x, res = 0, k;
-    vector<int> dist;
-    priority_queue<int> pq;
+    ll n, k1,k2,x, res = 0, k;
+    vector<ll> dist;
+    priority_queue<ll> pq;
     cin >> n >> k1 >> k2;
     k = k1+k2;
     for(int i = 0;i < n; i++){
@@ -17,7 +17,6 @@ int main(){
     }
     for(int i = 0;i < n; i++){
         cin >> x;
-        x = abs(x);
         pq.push(abs(dist[i] - x));
     }
     while(k--){
