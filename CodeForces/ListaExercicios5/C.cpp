@@ -1,23 +1,31 @@
 #include <bits/stdc++.h>
 #define endl "\n"// macro 
 #define ll long long// macro
+#define ull unsigned long long
 #define desync ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 using namespace std;
 //typedef long long int ll; define ll para long long int "macro"
 int main(){
     desync;
-    ll n,q,l,r,x, aux = 0,psum, msum;
-    vector<ll> arr;
-    cin >> n >> q;
-    for(int i = 0; i < n; i++){
-        cin >> x;
-        aux += x;
-        arr.push_back(aux);
+    ll t,n,aux,rs;
+    cin >> t;
+    while(t--){
+        cin >> n;
+        aux = n - 1;
+        if((aux & n) == 0){
+            cout << aux << endl;
+        }else{
+            rs = aux & n;
+            do{
+                aux = rs - 1;
+                if((rs&aux) == 0){
+                    cout << aux << endl;
+                    break;
+                }
+                rs = rs & aux;
+            }while((rs&aux) != 0);
+        }
     }
-    for(int i = 0; i < q; i++){
-        cin >> l >> r;
-    }
-    cout << msum << endl;
     return 0;
 }
 // notes : endl mais devagar que \n
