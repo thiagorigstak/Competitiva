@@ -7,6 +7,25 @@ using namespace std;
 //typedef long long int ll; define ll para long long int "macro"
 int main(){
     desync;
+    int t,n;
+    string s, sol, debug;
+    cin >> t;
+    for(int i = 0; i < t; i++){
+        cin >> n;
+        cin >> s;
+        sol = "";
+        for(int j = 0; j < n; j++){
+            debug  = s[j];
+            for(int k = j+1; k < n ; k++){
+                if(s[j] == s[k]){
+                    sol += debug;
+                    j = k;
+                    break;
+                }
+            }
+        }
+        cout << sol << endl;
+    }
     return 0;
 }
 // notes : endl mais devagar que \n
