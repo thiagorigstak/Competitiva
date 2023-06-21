@@ -56,3 +56,22 @@ int main()
 	DFS(adj, V);
 	return 0;
 }
+
+/* 
+outra forma de percorrer um grafo é fazer percorrimento em profundidade, também de chamado de DFS(Depth-first search). O algoritmo se chama assim porque funciona de uma forma que sempre vamos 'mergulhar' no grafo o mais fundo que pudermos. Quando não for mais possível ir mais fundo no grafo, voltamos até que seja ir mais fundo novamente, sem repetir vértices já visitados.
+
+A implementação do DFS mais comum é recursiva, por ser mais intuitiva. Assim como o exemplo anterior, esse programa simplesmente percorre o grafo, mas na ordem que um DFS percorre.
+
+ */
+vector<vector<int>> graph;
+vector<bool> visited;     // globais, inicializados na main.
+
+void dfs(int vertex){ // na main chamamos dfs(start), aonde start é o vértice que começamos o dfs
+    visited[vertex] = true;
+
+    for(int w: graph[vertex]){
+        if(!visited[w]){
+            dfs(w);
+        }
+    }    
+}

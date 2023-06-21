@@ -1,18 +1,62 @@
 #include <bits/stdc++.h>
-#define endl "\n"// macro 
-#define ll long long// macro
+
+#define endl "\n" // macro
+
+#define ll long long // macro
+
 #define ull unsigned long long
-#define desync ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+
+#define desync                        \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL);                    \
+    cout.tie(NULL)
+
 using namespace std;
-//typedef long long int ll; define ll para long long int "macro"
-int main(){
+
+ull n, m;
+
+int main()
+{
+    char c;
     desync;
-    
+
+    cin >> n >> m;
+
+    for (int i = 1; i <= n; i++)
+    {
+
+        for (int j = 1; j <= m; j++)
+        {
+            cin >> c;
+            if (c == '.')
+            {
+                if (i % 2 == 0)
+                { // linha par
+                    if (j % 2 == 0)
+                    { // coluna par
+                        cout << 'B';
+                    }
+                    else
+                    { // coluna impar
+                        cout << 'W';
+                    }
+                }
+                else
+                { // linha impar
+                    if (j % 2 == 0)
+                    { // coluna par
+                        cout << 'W';
+                    }
+                    else
+                    { // coluna impar
+                        cout << 'B';
+                    }
+                }
+            }else{// c == '-'
+                cout << '-';
+            }
+        }
+        cout << endl;
+    }
     return 0;
 }
-// notes : endl mais devagar que \n
-// cin string com espaço --> getline(cin,string var)
-// continue; - pula o bloco de comando atual e vai pro prox
-// break; - sai do laço definitivamente
-// min element vetor ou max element vetor ==> auto min = min_element(temp.begin(),temp.end()); cout << *min << endl; min é um ponteiro pro menor elemento do vetor
-// sort(me.begin(),me.end(),greater<int>()); // macete de ordenar inverso
