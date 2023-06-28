@@ -7,20 +7,36 @@ using namespace std;
 //typedef long long int ll; define ll para long long int "macro"
 int main(){
     desync;
-    int n, aux = 0;
-    stack<int> digits;
-    vector<int> answ;
+    int n, aux = 0, i = 0, contador;
+    vector<int> digits, answ;
     cin >> n;
     aux = n;
     while(aux > 0){
-        digits.push(aux%10);
+        digits.push_back(aux%10);
         aux /= 10;
     }
+    aux = 0;
+    contador = digits.size();
+    while(contador > 0){
+        if(i >= digits.size()){
+            i = 0;
+            answ.push_back(aux);
+            aux = 0;
+        }
+        if(digits[i] > 0){
+            digits[i] -= 1;
+            aux += pow(10,i);
+        }else{
+            if(digits[i] == 0){
+                contador--;
+                digits[i]--;
+            }
+        }
+        i++;
+    }
     cout << answ.size() << endl;
-    
-    while(!digits.empty()){
-        cout << digits.top() << ' ';
-        digits.pop();
+    for(int i = 0; i < answ.size(); i++){
+        cout << answ[i] << ' ';
     }
     cout << endl;
     return 0;
